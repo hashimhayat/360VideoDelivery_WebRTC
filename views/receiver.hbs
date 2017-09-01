@@ -1,0 +1,60 @@
+<h1 style="display: none">Receiver</h1>
+
+<style>
+    .rect {
+        width: 80px;
+        height: 80px;
+        position: absolute;
+        left: -1000px;
+        top: -1000px;
+    }
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/0.6.0/aframe-master.js"></script>
+
+<div style="display: none">Status: <span id="connection" >Disconnected.</span><br><br></div>
+
+<a-scene>
+    <a-assets>
+        <video id="video" src="https://ucarecdn.com/fadab25d-0b3a-45f7-8ef5-85318e92a261/" style="width: 80%; height: 80%;
+"
+               autoplay loop crossorigin="anonymous"></video>
+    </a-assets>
+`
+    <a-videosphere src="#video" rotation="0 180 0"></a-videosphere>
+</a-scene>
+
+
+<script src="/javascripts/receiver.js" charset="utf-8"></script>
+<script src="/javascripts/tracking-min.js"></script>
+
+
+<!--<script>-->
+
+    <!--window.onload = function() {-->
+        <!--var video = document.getElementById('video');-->
+        <!--var demoContainer = document.querySelector('.demo-container');-->
+        <!--var tracker = new tracking.ColorTracker(['magenta', 'cyan', 'yellow']);-->
+
+        <!--tracker.on('track', function(event) {-->
+            <!--event.data.forEach(function(rect) {-->
+                <!--window.plot(rect.x, rect.y, rect.width, rect.height, rect.color);-->
+            <!--});-->
+        <!--});-->
+
+        <!--tracking.track('#video', tracker);-->
+
+        <!--window.plot = function(x, y, w, h, color) {-->
+            <!--console.log(x, y, w, h, color);-->
+            <!--var rect = document.createElement('div');-->
+            <!--document.querySelector('.demo-container').appendChild(rect);-->
+            <!--rect.classList.add('rect');-->
+            <!--rect.style.border = '2px solid ' + color;-->
+            <!--rect.style.width = w + 'px';-->
+            <!--rect.style.height = h + 'px';-->
+            <!--rect.style.left = (video.offsetLeft + x) + 'px';-->
+            <!--rect.style.top = (video.offsetTop + y) + 'px';-->
+        <!--};-->
+    <!--};-->
+<!--</script>-->
+

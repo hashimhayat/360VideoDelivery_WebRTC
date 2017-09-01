@@ -1,0 +1,34 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+#option {
+  display: inline-block;
+  width: 30%;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  margin-right: 20px;
+  margin-top: 3%;
+  background-color: #00B7FF;
+  text-align: center;
+  font-size: 40px;
+  color: white;
+}
+
+#option:hover {
+  background-color: mediumseagreen;
+
+}
+
+.menu {
+  text-align: center;
+}
