@@ -10,14 +10,14 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/video-dev/clappr-rtmp-plugin@latest/dist/rtmp.min.js"></script>
 <script>
 
-rtmpUrl = "";
+RTMPURL = "";
 document.getElementById("submit").addEventListener("click", function(e){
     e.preventDefault();
-    var rtmpUrl = document.getElementById("url").value;
-    console.log(rtmpUrl)
+    var RTMPURL = document.getElementById("url").value;
+    console.log(RTMPURL)
 
     var player = new Clappr.Player({
-        source: rtmpUrl,
+        source: RTMPURL,
         parentId: "#player",
         plugins: {'playback': [RTMP]},
         rtmpConfig: {
