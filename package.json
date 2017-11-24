@@ -1,7 +1,7 @@
 {
   "name": "videotransmitter",
-  "version": "0.0.0",
-  "private": false,
+  "version": "1.0.0",
+  "private": true,
   "scripts": {
     "start": "node ./bin/www"
   },
@@ -14,6 +14,7 @@
     "morgan": "~1.8.1",
     "serve-favicon": "~2.4.2",
     "simple-peer": "^8.1.1",
+    "socket.io": "^2.0.4",
     "tracking": "^1.1.3"
   }
 }
