@@ -5,15 +5,19 @@ var signal = {};
 var response = {};
 
 router.get('/', function(req, res) {
-    res.render('index', { title: 'VideoTransmitter' });
+    res.render('index', { title: '360 Video Transmitter' });
 });
 
 router.get('/sender', function(req, res) {
-  res.render('sender', { title: 'VideoTransmitter' });
+  res.render('sender', { title: 'Sender' });
 });
 
 router.get('/receiver', function(req, res) {
-    res.render('receiver', { title: 'VideoTransmitter' });
+    res.render('receiver', { title: 'Receiver' });
+});
+
+router.get('/rtmp', function(req, res) {
+    res.render('rtmp', { title: 'RTMP Client' });
 });
 
 router.post('/signal', function(req, res) {
