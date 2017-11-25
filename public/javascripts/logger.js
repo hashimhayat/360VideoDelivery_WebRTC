@@ -4,7 +4,7 @@ const socket = io();
 config = {
 	start_time : Date.now(),
 	interval : 5000,
-	stay : 100,
+	stay : 500,
 	color : {r: 0, g: 255, b: 0}
 }	
 
