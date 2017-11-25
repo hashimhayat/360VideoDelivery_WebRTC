@@ -42,8 +42,15 @@ h1 {
 }
 
 #player {
-  margin-left: 30%;
+  margin-left: 25%;
   margin-top: 10%;
+}
+
+.flash {
+  display: none;
+  width: 100%;
+  padding-bottom: 50%;
+  background-color: magenta;
 }
 
 input[type=text], select, textarea {

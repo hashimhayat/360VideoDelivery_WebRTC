@@ -20,6 +20,10 @@ router.get('/rtmp', function(req, res) {
     res.render('rtmp', { title: 'RTMP Client' });
 });
 
+router.get('/logger', function(req, res) {
+    res.render('logger', { title: 'Logger' });
+});
+
 router.post('/signal', function(req, res) {
 
     if (req.body.signal){
