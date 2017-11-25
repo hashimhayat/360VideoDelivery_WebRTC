@@ -48,12 +48,11 @@
 
         colors.on('track', function(event) {
         
-            if (event.data.length === 0) {
-              // No colors were detected in this frame.
-            } else {
+            if (event.data.length > 0) {
+
+                let recvTime = Date.now();
                 event.data.forEach(function(rect) {
 
-                    let recvTime = Date.now();
                     if (flashed) {
                         let delay = recvTime - flashed;
                         console.log("Delay: ", delay); 

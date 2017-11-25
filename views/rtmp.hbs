@@ -13,8 +13,8 @@
 RTMPURL = "";
 document.getElementById("submit").addEventListener("click", function(e){
     e.preventDefault();
+    
     var RTMPURL = document.getElementById("url").value;
-    console.log(RTMPURL)
 
     var player = new Clappr.Player({
         source: RTMPURL,
