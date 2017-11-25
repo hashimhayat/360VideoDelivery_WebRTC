@@ -9,6 +9,7 @@ config = {
 }	
 
 window.onload = function() {
+
 	socket.emit('logger init', config);
 
 	var signal = document.getElementById('flash');
@@ -18,7 +19,6 @@ window.onload = function() {
 	function flashOn(){
 		
 		socket.emit('flashed', Date.now())
-
 		signal.style.display = 'block';
 		fOff = setTimeout(flashOff, config.stay);
 	}

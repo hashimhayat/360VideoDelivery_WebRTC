@@ -39,10 +39,11 @@
         var video = document.getElementById('video');
         var colors = new tracking.ColorTracker(['magenta']);
 
-        var flashed = null;
+        var flashed = undefined;
 
         socket.on('flashed', function(time) {
             flashed = time;
+            console.log("Flashed at: ", time);
         });
 
         colors.on('track', function(event) {
@@ -51,12 +52,12 @@
               // No colors were detected in this frame.
             } else {
                 event.data.forEach(function(rect) {
-                
-                    console.log(Date.now());
 
-                    if (flashed){
-                        let delay = Date.now() - flashed;
-                        console.log(delay);
+                    let recvTime = Date.now();
+                    if (flashed) {
+                        let delay = recvTime - flashed;
+                        console.log("Delay: ", delay); 
+                        flashed = undefined;
                     }
 
                 });

@@ -25,6 +25,11 @@ module.exports = function (io) {
             socket.broadcast.emit('accept handshake', response);
         });
 
+        // Flash was produced
+        socket.on('flashed', function (time) {
+            io.emit('flashed', time);
+        });
+
         socket.on('disconnect', function(){
             console.log(socket.id,' disconnected');
         });
