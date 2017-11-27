@@ -56,12 +56,11 @@
         });
 
         colors.on('track', function(event) {
-        
             if (event.data.length > 0) {
-                let recvTime = Date.now();
 
                 if (signalReceived){
-
+                    
+                    let recvTime = Date.now();
                     let trackerDelay = recvTime - signalReceived;
                     let delay = (recvTime - signalSent) - trackerDelay;
                     
