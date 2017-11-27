@@ -51,7 +51,7 @@
         socket.on('flashed', function(time) {
             signalSent = time;
             signalReceived = Date.now();
-            socketDelay = signalReceived - flashed
+            socketDelay = signalReceived - signalSent;
             console.log("Flashed at: ", time, "Socket Latency: ", socketDelay);
         });
 
@@ -63,13 +63,13 @@
                 if (signalReceived){
 
                     let trackerDelay = recvTime - signalReceived;
-
                     let delay = (recvTime - signalSent) - trackerDelay;
                     
                     signalSent = undefined;
                     signalReceived = undefined;
                     console.log("Tracker Delay: ", trackerDelay);
                     console.log("Delay: ", delay); 
+
                 } else {
                     console.log("Signal not received")
                 }
