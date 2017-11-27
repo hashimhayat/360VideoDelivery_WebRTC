@@ -58,20 +58,18 @@
         colors.on('track', function(event) {            
             if (event.data.length > 0) {
 
-                let frameReceived = Date.now();                
                 if (signalReceived){
-                    signalReceived = undefined;
-                    frameSent = undefined;
 
+                    let frameReceived = Date.now();
                     let trackerDelay = frameReceived - signalReceived;
                     let delay = (frameReceived - frameSent) - trackerDelay;
                     
                     console.log("Tracker Delay: ", trackerDelay);
                     console.log("Delay: ", delay); 
+                    signalReceived = undefined;
+                    frameSent = undefined;
 
-                } else {
-                    console.log("Signal not received")
-                }
+                } 
             }
         });
 
