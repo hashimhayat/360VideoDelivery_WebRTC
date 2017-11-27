@@ -14,8 +14,7 @@
 
 <div style="display: none">Status: <span id="connection" >Disconnected.</span><br><br></div>
 
-
-<video id="video" src="https://ucarecdn.com/fadab25d-0b3a-45f7-8ef5-85318e92a261/" style="width: 80%; height: 80%;"
+<video id="video" src="https://ucarecdn.com/fadab25d-0b3a-45f7-8ef5-85318e92a261/"
                autoplay loop crossorigin="anonymous"></video>
 
 <!-- <a-scene>
@@ -26,12 +25,13 @@
     <a-videosphere src="#video" rotation="0 180 0"></a-videosphere>
 </a-scene> -->
 
-  <div class="demo-frame">
-    <div class="demo-container">
-    </div>
-  </div>
-
-<div id="delay"></div>
+<div class="console">
+    <b>Frame Sent at:</b> <span id="flasedAt"></span><br>
+    <b>Frame Received at:</b> <span id="receivedAt"></span><br>
+    <b>Socket Latency:</b> <span id="socketDelay"></span><br>
+    <b>Tracker Latency:</b> <span id="trackerDelay"></span><br>
+    <b>End-to-End Delay:</b> <span id="delay"></span><br>
+</div>
 
 <script src="/javascripts/receiver.js" charset="utf-8"></script>
 <script src="/javascripts/tracking-min.js"></script>
@@ -40,7 +40,12 @@
 
     const socket = io();
 
+    var flashedAt = document.getElementById('flasedAt');
+    var receivedAt = document.getElementById('receivedAt');
+    var sDelay = document.getElementById('socketDelay');
+    var tDelay = document.getElementById('trackerDelay');
     var delayDiv = document.getElementById('delay');
+
 
     window.onload = function() {
 
@@ -50,6 +55,9 @@
         var frameSent = undefined;
         var signalReceived = undefined;
         var socketDelay = undefined;
+        var trackerDelay = undefined;
+        var frameReceived = undefined;
+        var eteDelay = undefined;
 
         socket.on('flashed', function(time) {
             frameSent = time;
@@ -63,19 +71,24 @@
 
                 if (signalReceived){
 
-                    let frameReceived = Date.now();
-                    let trackerDelay = frameReceived - signalReceived;
-                    let delay = (frameReceived - frameSent) - trackerDelay;
+                    frameReceived = Date.now();
+                    trackerDelay = frameReceived - signalReceived;
+                    eteDelay = (frameReceived - frameSent) - trackerDelay;
                     
                     console.log("Tracker Delay: ", trackerDelay);
-                    console.log("Delay: ", delay); 
-                    delayDiv.innerHTML = delay;
+                    console.log("Delay: ", eteDelay); 
                     signalReceived = undefined;
                     frameSent = undefined;
 
                 } 
             }
         });
+
+        flashedAt.innerHTML = frameSent;
+        receivedAt.innerHTML = signalReceived;
+        sDelay.innerHTML = socketDelay + ' ms';
+        tDelay.innerHTML = trackerDelay + ' ms';
+        delayDiv.innerHTML = eteDelay + ' ms';
 
         tracking.track('#video', colors);
     };
