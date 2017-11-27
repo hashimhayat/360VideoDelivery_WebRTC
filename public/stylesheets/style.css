@@ -13,7 +13,7 @@ h1 {
 
 #option {
   display: inline-block;
-  width: 30%;
+  width: 300px;
   padding-top: 100px;
   padding-bottom: 100px;
   margin-right: 20px;
@@ -26,7 +26,7 @@ h1 {
 
 #option:hover {
   background-color: mediumseagreen;
-
+  cursor: pointer;
 }
 
 .menu {
