@@ -1,6 +1,6 @@
 
 <div id="rtmpUrl">
-    <input id="url" type="text" name="RTMP" placeholder="Enter RTMP Link">
+    <input id="url" type="text" value="rtmp://localhost/live/hayat" name="RTMP" placeholder="Enter RTMP Link">
     <input id="submit" type="submit" value="Enter">
 </div>
 
@@ -9,6 +9,8 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/video-dev/clappr-rtmp-plugin@latest/dist/rtmp.min.js"></script>
 <script>
+
+const socket = io();
 
 RTMPURL = "";
 document.getElementById("submit").addEventListener("click", function(e){
@@ -32,7 +34,7 @@ document.getElementById("submit").addEventListener("click", function(e){
                     "minDroppedFps": 2
                 },
                 "InsufficientBufferRule": {
-                    "minBufferLength": 2
+                    "minBufferLength": 0.1
                 },
                 "DroppedFramesRule": {
                     "downSwitchByOne": 10,
