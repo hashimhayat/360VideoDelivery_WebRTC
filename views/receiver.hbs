@@ -26,6 +26,11 @@
     <a-videosphere src="#video" rotation="0 180 0"></a-videosphere>
 </a-scene> -->
 
+  <div class="demo-frame">
+    <div class="demo-container">
+    </div>
+  </div>
+
 
 <script src="/javascripts/receiver.js" charset="utf-8"></script>
 <script src="/javascripts/tracking-min.js"></script>
@@ -40,9 +45,11 @@
         var colors = new tracking.ColorTracker(['magenta']);
 
         var flashed = undefined;
+        var signalReceived = undefined;
 
         socket.on('flashed', function(time) {
             flashed = time;
+            signalReceived = Date.now();
             console.log("Flashed at: ", time);
         });
 
@@ -51,19 +58,33 @@
             if (event.data.length > 0) {
 
                 let recvTime = Date.now();
-                event.data.forEach(function(rect) {
+                // event.data.forEach(function(rect) {
+
+                    let tracker_delay = Date.now() - signalReceived;
+                    console.log("Tracker Delay: ", tracker_delay);
 
                     if (flashed) {
-                        let delay = recvTime - flashed;
+                        let delay = recvTime - flashed - tracker_delay;
                         console.log("Delay: ", delay); 
                         flashed = undefined;
                     }
 
-                });
+                // });
             }
         });
 
         tracking.track('#video', colors);
+
+      //   window.plot = function(x, y, w, h, color) {
+      //       var rect = document.createElement('div');
+      //       document.querySelector('.demo-container').appendChild(rect);
+      //       rect.classList.add('rect');
+      //       rect.style.border = '2px solid ' + color;
+      //       rect.style.width = w + 'px';
+      //       rect.style.height = h + 'px';
+      //       rect.style.left = (100 + x) + 'px';
+      //       rect.style.top = (100 + y) + 'px';
+      // };
     };
 </script>
 
