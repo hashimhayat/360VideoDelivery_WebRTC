@@ -64,7 +64,7 @@
 
                     let trackerDelay = recvTime - signalReceived;
 
-                    let delay = (recvTime - flashed) - socketDelay - trackerDelay;
+                    let delay = (recvTime - flashed) - trackerDelay;
                     
                     flashed = undefined;
                     signalReceived = undefined;
