@@ -50,7 +50,7 @@
         socket.on('flashed', function(time) {
             flashed = time;
             signalReceived = Date.now();
-            console.log("Flashed at: ", time);
+            //console.log("Flashed at: ", time);
         });
 
         colors.on('track', function(event) {
@@ -61,7 +61,7 @@
                 if (signalReceived){
 
                     let tracker_delay = Date.now() - signalReceived;
-                    console.log("Tracker Delay: ", tracker_delay);
+                    //console.log("Tracker Delay: ", tracker_delay);
 
                     let delay = (recvTime - flashed);
                     console.log("Delay: ", delay); 
