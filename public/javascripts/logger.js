@@ -15,21 +15,16 @@ window.onload = function() {
 	var signal = document.getElementById('flash');
 	var flasher = setInterval(flashOn, config.interval);
 	var fOff = null;
-	var emit = false;
 
 	function flashOn(){
 		
 		signal.style.display = 'block';
-		if (!emit){
-			socket.emit('flashed', Date.now());
-			emit = true;
-		}
+		socket.emit('flashed', Date.now());
 		fOff = setTimeout(flashOff, config.stay);
 	}
 
 	function flashOff(){
 		signal.style.display = 'none';
-		emit = false;
 	}
 }
 
