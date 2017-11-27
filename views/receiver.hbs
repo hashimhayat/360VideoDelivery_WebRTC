@@ -77,6 +77,13 @@
                     
                     console.log("Tracker Delay: ", trackerDelay);
                     console.log("Delay: ", eteDelay); 
+
+                    flashedAt.innerHTML = frameSent;
+                    receivedAt.innerHTML = signalReceived;
+                    sDelay.innerHTML = socketDelay + ' ms';
+                    tDelay.innerHTML = trackerDelay + ' ms';
+                    delayDiv.innerHTML = eteDelay + ' ms';
+
                     signalReceived = undefined;
                     frameSent = undefined;
 
@@ -84,11 +91,6 @@
             }
         });
 
-        flashedAt.innerHTML = frameSent;
-        receivedAt.innerHTML = signalReceived;
-        sDelay.innerHTML = socketDelay + ' ms';
-        tDelay.innerHTML = trackerDelay + ' ms';
-        delayDiv.innerHTML = eteDelay + ' ms';
 
         tracking.track('#video', colors);
     };
