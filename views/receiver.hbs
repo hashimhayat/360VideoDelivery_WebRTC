@@ -44,12 +44,12 @@
         var video = document.getElementById('video');
         var colors = new tracking.ColorTracker(['magenta']);
 
-        var flashed = undefined;
+        var signalSent = undefined;
         var signalReceived = undefined;
         var socketDelay = undefined;
 
         socket.on('flashed', function(time) {
-            flashed = time;
+            signalSent = time;
             signalReceived = Date.now();
             socketDelay = signalReceived - flashed
             console.log("Flashed at: ", time, "Socket Latency: ", socketDelay);
@@ -64,12 +64,14 @@
 
                     let trackerDelay = recvTime - signalReceived;
 
-                    let delay = (recvTime - flashed) - trackerDelay;
+                    let delay = (recvTime - signalSent) - trackerDelay;
                     
-                    flashed = undefined;
+                    signalSent = undefined;
                     signalReceived = undefined;
                     console.log("Tracker Delay: ", trackerDelay);
                     console.log("Delay: ", delay); 
+                } else {
+                    console.log("Signal not received")
                 }
             }
         });
