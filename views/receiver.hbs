@@ -58,18 +58,19 @@
             if (event.data.length > 0) {
 
                 let recvTime = Date.now();
-                // event.data.forEach(function(rect) {
 
-                    let tracker_delay = Date.now() - signalReceived;
-                    console.log("Tracker Delay: ", tracker_delay);
+                    if (signalReceived){
+                        let tracker_delay = Date.now() - signalReceived;
+                        console.log("Tracker Delay: ", tracker_delay);
+                    }
 
                     if (flashed) {
                         let delay = recvTime - flashed - tracker_delay;
                         console.log("Delay: ", delay); 
                         flashed = undefined;
+                        signalReceived = undefined;
                     }
 
-                // });
             }
         });
 
