@@ -13,6 +13,8 @@ window.onload = function() {
 	socket.emit('logger init', config);
 
 	var signal = document.getElementById('flash');
+	flash.style.width = window.innerWidth;
+	flash.style.height = window.innerHeight;
 	var flasher = setInterval(flashOn, config.interval);
 	var fOff = null;
 

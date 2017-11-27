@@ -58,20 +58,21 @@
         colors.on('track', function(event) {            
             if (event.data.length > 0) {
 
-                let frameReceived = Date.now();                
-                if (signalReceived){
+                console.log(Date.now())
+                // let frameReceived = Date.now();                
+                // if (signalReceived){
                     
-                    let trackerDelay = frameReceived - signalReceived;
-                    let delay = (frameReceived - frameSent) - trackerDelay;
+                //     let trackerDelay = frameReceived - signalReceived;
+                //     let delay = (frameReceived - frameSent) - trackerDelay;
                     
-                    frameSent = undefined;
-                    signalReceived = undefined;
-                    // console.log("Tracker Delay: ", trackerDelay);
-                    console.log("Delay: ", delay); 
+                //     frameSent = undefined;
+                //     signalReceived = undefined;
+                //     // console.log("Tracker Delay: ", trackerDelay);
+                //     console.log("Delay: ", delay); 
 
-                } else {
-                    console.log("Signal not received")
-                }
+                // } else {
+                //     console.log("Signal not received")
+                // }
             }
         });
 
