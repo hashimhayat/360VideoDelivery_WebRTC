@@ -44,29 +44,29 @@
         var video = document.getElementById('video');
         var colors = new tracking.ColorTracker(['magenta']);
 
-        var signalSent = undefined;
+        var frameSent = undefined;
         var signalReceived = undefined;
         var socketDelay = undefined;
 
         socket.on('flashed', function(time) {
-            signalSent = time;
+            frameSent = time;
             signalReceived = Date.now();
-            socketDelay = signalReceived - signalSent;
+            socketDelay = signalReceived - frameSent;
             console.log("Flashed at: ", time, "Socket Latency: ", socketDelay);
         });
 
-        colors.on('track', function(event) {
+        colors.on('track', function(event) {            
             if (event.data.length > 0) {
 
+                let frameReceived = Date.now();                
                 if (signalReceived){
                     
-                    let recvTime = Date.now();
-                    let trackerDelay = recvTime - signalReceived;
-                    let delay = (recvTime - signalSent) - trackerDelay;
+                    let trackerDelay = frameReceived - signalReceived;
+                    let delay = (frameReceived - frameSent) - trackerDelay;
                     
-                    signalSent = undefined;
+                    frameSent = undefined;
                     signalReceived = undefined;
-                    console.log("Tracker Delay: ", trackerDelay);
+                    // console.log("Tracker Delay: ", trackerDelay);
                     console.log("Delay: ", delay); 
 
                 } else {
