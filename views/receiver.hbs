@@ -31,6 +31,7 @@
     </div>
   </div>
 
+<div id="delay"></div>
 
 <script src="/javascripts/receiver.js" charset="utf-8"></script>
 <script src="/javascripts/tracking-min.js"></script>
@@ -38,6 +39,8 @@
 <script>
 
     const socket = io();
+
+    var delayDiv = document.getElementById('delay');
 
     window.onload = function() {
 
@@ -66,6 +69,7 @@
                     
                     console.log("Tracker Delay: ", trackerDelay);
                     console.log("Delay: ", delay); 
+                    delayDiv.innerHTML = delay;
                     signalReceived = undefined;
                     frameSent = undefined;
 
