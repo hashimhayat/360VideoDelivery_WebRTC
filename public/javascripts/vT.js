@@ -33,11 +33,9 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(function 
         socket.emit('sending handshake', data);
     });
 
-    tranmitter.on('stream', function (stream) {
         var video = document.getElementById('video');
         video.src = window.URL.createObjectURL(stream);
         video.play();
-    });
 
 }, function (err) {
     console.error(err);

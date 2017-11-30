@@ -30,6 +30,10 @@ module.exports = function (io) {
             io.emit('flashed', time);
         });
 
+        socket.on('sender_time', function(time) {
+            io.emit('sender_time', time);
+        });
+
         socket.on('disconnect', function(){
             console.log(socket.id,' disconnected');
         });
